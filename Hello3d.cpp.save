@@ -9,9 +9,7 @@ double ZoomZ = 25;
 double Vx = 0;
 double Vy = 0;
 double Vz = 0;
-double A = 0;
-double B = 0;
-double C = 0;
+
 
 void Line3D(int X1, int Y1, int Z1, int X2, int Y2, int Z2);
 void Rectangle3D(int X1, int Y1, int Z1, int X2, int Y2, int Z2, COLORREF Color);
@@ -28,32 +26,32 @@ int main()
 
 void Line3D(int X1, int Y1, int Z1, int X2, int Y2, int Z2)
     {
-    double X1_old = X1, Y1_old = Y1, Z1_old = Z1;
-    double X2_old = X2, Y2_old = Y2, Z2_old = Z2;
+    double X1_old = X1, y1_old = y1, z1_old = z1;
+    double X2_old = X2, y2_old = y2, z2_old = z2;
 
-    Y1 = Z1_old * sin (A) + Y1_old * cos (A);
-    Y2 = Z2_old * sin (A) + Y2_old * cos (A);
-    Z1 = Z1_old * cos (A) - Y1_old * sin (A);
-    Z2 = Z2_old * cos (A) - Y2_old * sin (A);
+    y1 = z1_old * sin (A) + y1_old * cos (A);
+    y2 = z2_old * sin (A) + y2_old * cos (A);
+    z1 = z1_old * cos (A) - y1_old * sin (A);
+    z2 = z2_old * cos (A) - y2_old * sin (A);
 
-    Y1_old = Y1;
-    Y2_old = Y2;
-    Z1_old = Z1;
-    Z2_old = Z2;
+    y1_old = y1;
+    y2_old = y2;
+    z1_old = z1;
+    z2_old = z2;
 
-    Y1 = X1_old * sin (B) + Y1_old * cos (B);
-    Y2 = X2_old * sin (B) + Y2_old * cos (B);
-    X1 = X1_old * cos (B) - Y1_old * sin (B);
-    X2 = X2_old * cos (B) - Y2_old * sin (B);
+    y1 = x1_old * sin (B) + y1_old * cos (B);
+    y2 = x2_old * sin (B) + y2_old * cos (B);
+    x1 = x1_old * cos (B) - y1_old * sin (B);
+    x2 = x2_old * cos (B) - y2_old * sin (B);
 
-    X1_old = X1;
-    X2_old = X2;
+    x1_old = x1;
+    x2_old = x2;
 
-    Z1 = X1_old * sin (C) + Z1_old * cos (C);
-    Z2 = X2_old * sin (C) + Z2_old * cos (C);
-    X1 = X1_old * cos (C) - Z1_old * sin (C);
-    X2 = X2_old * cos (C) - Z2_old * sin (C);
-
+    z1 = x1_old * sin (C) + z1_old * cos (C);
+    z2 = x2_old * sin (C) + z2_old * cos (C);
+    x1 = x1_old * cos (C) - z1_old * sin (C);
+    x2 = x2_old * cos (C) - z2_old * sin (C);
+    
     X1 *= ZoomX;
     Y1 *= ZoomY;
     Z1 *= ZoomZ;
@@ -69,13 +67,13 @@ void Line3D(int X1, int Y1, int Z1, int X2, int Y2, int Z2)
     Z2 += Vz;
 
     txLine(X1/(Z1 - Zmin) + XWindowS/2, -Y1/(Z1 - Zmin) + YWindowS/2, X2/(Z2 - Zmin) + XWindowS/2, -Y2/(Z2 - Zmin) + YWindowS/2);
-
-    X1_old = X1;
-    Y1_old = Y1;
-    Z1_old = Z1;
-    X2_old = X2;
-    Y2_old = Y2;
-    Z2_old = Z2;
+    
+    x1_old = x1;
+    y1_old = y1;
+    z1_old = z1;
+    x2_old = x2;
+    y2_old = y2;
+    z2_old = z2;
     }
 
 void Rectangle3D(int X1, int Y1, int Z1, int X2, int Y2, int Z2, COLORREF Color)
@@ -117,7 +115,6 @@ void StartAll()
         {
         txBegin();
         txClear();
-        Rotation();
         Scale();
         Movement();
         Rectangle3D(-2, 2, 2, 2, -2, -2, RGB(55, 43, 210));
@@ -140,16 +137,16 @@ void Movement()
         Vz = 0;
         }
     }
-
+    
 void Rotation()
     {
-    if (GetAsyncKeyState (VK_LEFT)) C -= 0.01;
-    if (GetAsyncKeyState (VK_RIGHT)) C += 0.01;
-    if (GetAsyncKeyState ('M')) B -= 0.01;
-    if (GetAsyncKeyState ('N')) B += 0.01;
-    if (GetAsyncKeyState (VK_UP)) A -= 0.01;
-    if (GetAsyncKeyState (VK_DOWN)) A += 0.01;
+    if (GetAsyncKeyState (VK_LEFT)) C -= 0.05;
+    if (GetAsyncKeyState (VK_RIGHT)) C += 0.05;
+    if (GetAsyncKeyState ('M')) B -= 0.05;
+    if (GetAsyncKeyState ('N')) B += 0.05;
+    if (GetAsyncKeyState (VK_UP)) A -= 0.05;
+    if (GetAsyncKeyState (VK_DOWN)) A += 0.05;
     }
-
+    
 
 
