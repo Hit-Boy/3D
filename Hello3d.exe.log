@@ -1,0 +1,229 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Public\Downloads\3D\Hello3d.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x00425BAD в функции Line3D в файле C:/Users/Public/Downloads/3D/Hello3d.cpp на строке 65. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F42C0 (32-bit), Flags: CMdRe0, Thread: 0x1440 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00425BAD in C:\Users\Public\Downloads\3D\Hello3d.exe!Line3D at C:/Users/Public/Downloads/3D/Hello3d.cpp (65):
+
+     63: 
+     64:     const int Zmin = -100;
+=>   65:     txLine(X1/(Z1 - Zmin) + XWindowS/2, -Y1/(Z1 - Zmin) + YWindowS/2, X2/(Z2 - Zmin) + XWindowS/2, -Y2/(Z2 - Zmin) + YWindowS/2);
+     66: 
+     67:     X1_old = X1;
+
+# 1 0x00425D25 in C:\Users\Public\Downloads\3D\Hello3d.exe!Rectangle3D at C:/Users/Public/Downloads/3D/Hello3d.cpp (79):
+
+     77:     txSetColor(Color, 5);
+     78:     Line3D(X1, Y1, Z1, X2, Y1, Z1); //верхнее переднее ребро
+=>   79:     Line3D(X1, Y1, Z2, X2, Y1, Z2); //верхнее заднее ребро
+     80:     Line3D(X1, Y1, Z1, X1, Y1, Z2); //верхнее левое ребро
+     81:     Line3D(X2, Y1, Z2, X2, Y1, Z1); //верхнее правое ребро
+
+# 2 0x0042604E in C:\Users\Public\Downloads\3D\Hello3d.exe!StartAll at C:/Users/Public/Downloads/3D/Hello3d.cpp (117):
+
+    115:         Scale();
+    116:         Movement();
+=>  117:         Rectangle3D(2, 2, 2, -2, -2, -2, RGB(55, 43, 210));
+    118:         txEnd();
+    119:         }
+
+# 3 0x0042573D in C:\Users\Public\Downloads\3D\Hello3d.exe!main at C:/Users/Public/Downloads/3D/Hello3d.cpp (19):
+
+     17:     {
+     18:     txCreateWindow(XWindowS, YWindowS);
+=>   19:     StartAll();
+     20:     }
+     21: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Line3D(int, int, int, int, int, int) at C:\Users\Public\Downloads\3D\Hello3d.cpp (65):
+
+     63: 
+     64:     const int Zmin = -100;
+=>   65:     txLine(X1/(Z1 - Zmin) + XWindowS/2, -Y1/(Z1 - Zmin) + YWindowS/2, X2/(Z2 - Zmin) + XWindowS/2, -Y2/(Z2 - Zmin) + YWindowS/2);
+     66: 
+     67:     X1_old = X1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\User\Desktop\TX\TXLib.h
+Compiled:	Feb 21 2017 11:09:36, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 21 2017 11:09:39
+
+Run file:	C:\Users\Public\Downloads\3D\Hello3d.exe
+Directory:	C:\Users\Public\Downloads\3D
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Public\Downloads\3D\Hello3d.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Деление на ноль при операции с плавающей точкой.
+
+Исключение EXCEPTION_FLT_DIVIDE_BY_ZERO (0xC000008E) при выполнении кода по адресу 0x00425B23 в функции Line3D в файле C:/Users/Public/Downloads/3D/Hello3d.cpp на строке 126. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F42C0 (32-bit), Flags: CMdRe0, Thread: 0x13F8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00425B23 in C:\Users\Public\Downloads\3D\Hello3d.exe!Line3D at C:/Users/Public/Downloads/3D/Hello3d.cpp (126):
+
+    124: z2 += Vz;
+    125: double zmin = -100;
+=>  126: txLine ((x1)/(z1 - zmin) + XWindowS / 2, YWindowS / 2 - (y1)/(z1 - zmin), XWindowS / 2 + (x2)/(z2 - zmin), YWindowS / 2 - (y2)/(z2 - zmin));
+    127: 
+    128: x1_old = x1;
+
+# 1 0x00425C7B in C:\Users\Public\Downloads\3D\Hello3d.exe!Rectangle3D at C:/Users/Public/Downloads/3D/Hello3d.cpp (140):
+
+    138:     txSetColor(Color, 5);
+    139:     Line3D(X1, Y1, Z1, X2, Y1, Z1); //верхнее переднее ребро
+=>  140:     Line3D(X1, Y1, Z2, X2, Y1, Z2); //верхнее заднее ребро
+    141:     Line3D(X1, Y1, Z1, X1, Y1, Z2); //верхнее левое ребро
+    142:     Line3D(X2, Y1, Z2, X2, Y1, Z1); //верхнее правое ребро
+
+# 2 0x00425FE0 in C:\Users\Public\Downloads\3D\Hello3d.exe!StartAll at C:/Users/Public/Downloads/3D/Hello3d.cpp (178):
+
+    176:         Scale();
+    177:         Movement();
+=>  178:         Rectangle3D(2, 2, 2, -2, -2, -2, RGB(55, 43, 210));
+    179:         txEnd();
+    180:         }
+
+# 3 0x0042573D in C:\Users\Public\Downloads\3D\Hello3d.exe!main at C:/Users/Public/Downloads/3D/Hello3d.cpp (20):
+
+     18:     {
+     19:     txCreateWindow(XWindowS, YWindowS);
+=>   20:     StartAll();
+     21:     }
+     22: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Line3D(double, double, double, double, double, double) at C:\Users\Public\Downloads\3D\Hello3d.cpp (126):
+
+    124: z2 += Vz;
+    125: double zmin = -100;
+=>  126: txLine ((x1)/(z1 - zmin) + XWindowS / 2, YWindowS / 2 - (y1)/(z1 - zmin), XWindowS / 2 + (x2)/(z2 - zmin), YWindowS / 2 - (y2)/(z2 - zmin));
+    127: 
+    128: x1_old = x1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\User\Desktop\TX\TXLib.h
+Compiled:	Feb 21 2017 12:00:39, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 21 2017 12:00:42
+
+Run file:	C:\Users\Public\Downloads\3D\Hello3d.exe
+Directory:	C:\Users\Public\Downloads\3D
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Public\Downloads\3D\Hello3d.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Деление на ноль при операции с плавающей точкой.
+
+Исключение EXCEPTION_FLT_DIVIDE_BY_ZERO (0xC000008E) при выполнении кода по адресу 0x00425B23 в функции Line3D в файле C:/Users/Public/Downloads/3D/Hello3d.cpp на строке 126. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F42C0 (32-bit), Flags: CMdRe0, Thread: 0x18CC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00425B23 in C:\Users\Public\Downloads\3D\Hello3d.exe!Line3D at C:/Users/Public/Downloads/3D/Hello3d.cpp (126):
+
+    124: z2 += Vz;
+    125: double zmin = -100;
+=>  126: txLine ((x1)/(z1 - zmin) + XWindowS / 2, YWindowS / 2 - (y1)/(z1 - zmin), XWindowS / 2 + (x2)/(z2 - zmin), YWindowS / 2 - (y2)/(z2 - zmin));
+    127: 
+    128: x1_old = x1;
+
+# 1 0x00425C7B in C:\Users\Public\Downloads\3D\Hello3d.exe!Rectangle3D at C:/Users/Public/Downloads/3D/Hello3d.cpp (140):
+
+    138:     txSetColor(Color, 5);
+    139:     Line3D(X1, Y1, Z1, X2, Y1, Z1); //верхнее переднее ребро
+=>  140:     Line3D(X1, Y1, Z2, X2, Y1, Z2); //верхнее заднее ребро
+    141:     Line3D(X1, Y1, Z1, X1, Y1, Z2); //верхнее левое ребро
+    142:     Line3D(X2, Y1, Z2, X2, Y1, Z1); //верхнее правое ребро
+
+# 2 0x00425FE0 in C:\Users\Public\Downloads\3D\Hello3d.exe!StartAll at C:/Users/Public/Downloads/3D/Hello3d.cpp (178):
+
+    176:         Scale();
+    177:         Movement();
+=>  178:         Rectangle3D(20, 20, 20, -20, -20, -20, RGB(55, 43, 210));
+    179:         txEnd();
+    180:         }
+
+# 3 0x0042573D in C:\Users\Public\Downloads\3D\Hello3d.exe!main at C:/Users/Public/Downloads/3D/Hello3d.cpp (20):
+
+     18:     {
+     19:     txCreateWindow(XWindowS, YWindowS);
+=>   20:     StartAll();
+     21:     }
+     22: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Line3D(double, double, double, double, double, double) at C:\Users\Public\Downloads\3D\Hello3d.cpp (126):
+
+    124: z2 += Vz;
+    125: double zmin = -100;
+=>  126: txLine ((x1)/(z1 - zmin) + XWindowS / 2, YWindowS / 2 - (y1)/(z1 - zmin), XWindowS / 2 + (x2)/(z2 - zmin), YWindowS / 2 - (y2)/(z2 - zmin));
+    127: 
+    128: x1_old = x1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\User\Desktop\TX\TXLib.h
+Compiled:	Feb 21 2017 12:05:10, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 21 2017 12:05:13
+
+Run file:	C:\Users\Public\Downloads\3D\Hello3d.exe
+Directory:	C:\Users\Public\Downloads\3D
+
+--------------------------------------------------
